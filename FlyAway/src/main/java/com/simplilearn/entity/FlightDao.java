@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 public class FlightDao {
 
-	List<FlightDetails> searchFlights(String date,String source,String destination,String persons)
+	public List<FlightDetails> searchFlights(String date,String source,String destination,String persons)
 	
 	{
 		

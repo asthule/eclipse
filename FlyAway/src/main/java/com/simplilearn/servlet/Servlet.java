@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.simplilearn.entity.FlightDao;
+import com.simplilearn.entity.FlightDetails;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
 
 /**
@@ -58,17 +59,15 @@ public class Servlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		FlightDao fd = new FlightDao();
 		
-		SimpleDateFormat flydate = new SimpleDateFormat("yy-mm-dd");
-		
-		System.out.println("fly"+flydate);
+		String flydate = new SimpleDateFormat("yy-mm-dd").format(date);
 		
 		for(FlightDetails dl:fd.searchFlights(flydate, source, destination, persons))
 		{
 	
 			
-			if((dl.getD().equalsIgnoreCase(flydate))&&(dl.getSource().equals(source))&&(dl.getDestination().equals(destination)))
+			if((dl.getDate().equalsIgnoreCase(flydate))&&(dl.getSource().equals(source))&&(dl.getDestination().equals(destination)))
 			{
-				request.setAttribute("FlightId", dl.getFlightId());
+				request.setAttribute("FlightId", dl.getFlightID());
 				request.setAttribute("source", dl.getSource());
 				request.setAttribute("destination", dl.getDestination());
 				request.setAttribute("airline", dl.getAirline());
@@ -82,6 +81,9 @@ public class Servlet extends HttpServlet {
 		}
 		out.println("</table>");
 		out.println("</body></html>");
+		
+		System.out.println("fly"+flydate);
+		
 		
 		
 	}
