@@ -1,0 +1,27 @@
+<body>
+    <nav class="'navbar navbar-expand-md navbar-dark admin-navbar-custom justify-content-center">
+        <a href="/" class="navbar-brand">Medicare</a>
+    </nav>
+    <div class="readersack">
+        <div class="container mt-5 sm">
+            <div class="row justify-content-center">
+                <div class="col-md-6 offset-md-0 shadow-lg p-3 mb-5 bg-white rounded"
+                     style="border: 2px solid red;">
+
+                     <div class="container">
+                        <div class="row justify-content-center">
+                            <h1>SignUp</h1>
+                        </div>
+                     </div>
+                    </div>
+
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <label>User Name</label>
+                        <input type="text" formControlName="username" class="form-control"
+                             [ngClass]="{ 'is-invalid': submitted && f['username'].errors}"/>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</body>
